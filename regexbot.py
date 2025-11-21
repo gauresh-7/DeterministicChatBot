@@ -17,7 +17,7 @@ def Respond(user_input):
     if re.search(insults, user_input):
         return "THATS RUDE , LEARN SOME MANNERS DUDE"
     
-    # Capture phrases after "do you think" or similar
+   
     good = re.search(r'(?:do you think|whats your opinion on|what do you think of|do you)\s+(.+)', user_input)
     if good:
         thing = good.group(1)
@@ -25,6 +25,6 @@ def Respond(user_input):
     
     return "Hmm, I don't have an answer for that."
 
-# Main loop
+
 user_input = input("What would you like to ask? ")
 print("BOT:", Respond(user_input))
