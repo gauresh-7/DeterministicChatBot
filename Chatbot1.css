@@ -12,7 +12,7 @@ body {
   font-size: 56px;
   font-weight: 700;
   letter-spacing: 1px;
-  color: #0b59cd;
+  color: #15dab3;
   text-shadow: 0 4px 24px rgba(76, 204, 127, 0.16);
   margin: 48px 0 16px;
   text-align: center;
@@ -42,7 +42,7 @@ body {
 input[type="text"], textarea {
   background-color: #2b2d31; /* box background */
   color: #e2e4e6;            /* text color */
-  border: 1px solid #0b59cd; /* optional: border color */
+  border: 1px solid #4ecc7f; /* optional: border color */
   padding: 12px;
   border-radius: 8px;
   font-family: 'Montserrat', Arial, sans-serif;
