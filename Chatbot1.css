@@ -40,10 +40,42 @@ body {
   font-family: 'Montserrat', Arial, sans-serif;
 }
 input[type="text"], textarea {
-  background-color: #2b2d31; /* box background */
-  color: #e2e4e6;            /* text color */
-  border: 1px solid #4ecc7f; /* optional: border color */
+  background-color: #2b2d31;
+  color: #e2e4e6;
+  border: 1px solid #4ecc7f;
   padding: 12px;
   border-radius: 8px;
   font-family: 'Montserrat', Arial, sans-serif;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#ask-button {
+  background-color: #15dab3;
+  color: #212224;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 16px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+#ask-button:hover {
+  background-color: #12c29f;
+  transform: translateY(-1px);
+}
+
+#ask-button:active {
+  transform: translateY(0);
+}
+
+#bot-response {
+  color: #e0e2e4;
+  margin-top: 20px;
+  font-size: 1rem;
+  line-height: 1.5;
 }
