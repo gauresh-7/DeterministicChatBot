@@ -8,15 +8,14 @@ from nltk.corpus import stopwords
 from wikipedia.exceptions import DisambiguationError, PageError
 from flask import Flask, request, jsonify, render_template
 
-
+# Ensure NLTK stopwords are available (both locally and on Render)
 try:
-    nltk.data.find('corpora/stopwords')
-except nltk.downloader.DownloadError:
-    print("Downloading NLTK stopwords...")
+    # This will raise LookupError if the corpus is missing
+    _ = stopwords.words('english')
+except LookupError:
+    print("Downloading NLTK stopwords corpus...")
     nltk.download('stopwords')
     print("Download complete.")
-except LookupError:
-     print("NLTK not found. Please ensure it is installed: pip install nltk")
 
 
 
