@@ -4,7 +4,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="Chatbot1.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Chatbot1.css') }}">
 </head>
 <body>
     <h1 id="welcome">Hello, what would you like to ask today?</h1>
@@ -15,6 +15,6 @@
         <p id="bot-response"></p>
     </div>
 
-    <script src="Chatbot1.js"></script>
+    <script src="{{ url_for('static', filename='Chatbot1.js') }}"></script>
 </body>
 </html>

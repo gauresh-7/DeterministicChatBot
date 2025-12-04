@@ -94,5 +94,6 @@ if __name__ == "__main__":
         user_input = input("What would you like to ask? ")
         print("BOT:", respond(user_input))
     else:
-        app.run(debug=True, port=5001)
+        port = int(os.environ.get('PORT', 5001))
+        app.run(debug=False, host='0.0.0.0', port=port)
 
