@@ -1,2 +1,5 @@
 Flask==3.1.2
+nltk>=3.9.2
+wikipedia-api>=0.8.1
+requests>=2.32.0
 

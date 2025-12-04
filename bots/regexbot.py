@@ -1,8 +1,14 @@
 import re
 import sys
-from flask import Flask, request, jsonify, send_from_directory
+import os
+from flask import Flask, request, jsonify, render_template
+from wordRecogniser import extract_keywords, askWiki
 
-app = Flask(__name__, static_folder=".", static_url_path="")
+# Get the parent directory path
+parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+app = Flask(__name__, 
+            static_folder=os.path.join(parent_dir, 'static'),
+            template_folder=os.path.join(parent_dir, 'templates'))
 
 
 def respond(user_input):
@@ -60,12 +66,20 @@ def respond(user_input):
     if match_opinion:
         return f"Yes, I think {match_opinion.group(1)} is nice!"
     
+    # If no patterns matched, try Wikipedia for factual questions
+    keywords = extract_keywords(user_input)
+    if keywords:
+        wiki_answer = askWiki(keywords)
+        # Only return Wikipedia answer if it's not an error message
+        if not wiki_answer.startswith("ERROR") and not wiki_answer.startswith("Error"):
+            return wiki_answer
+    
     return "Hmm, I don't have an answer for that."
 
 
 @app.route("/")
 def index():
-    return send_from_directory(".", "ChatBot1.html")
+    return render_template("ChatBot1.html")
 
 
 @app.post("/answer")
@@ -80,5 +94,5 @@ if __name__ == "__main__":
         user_input = input("What would you like to ask? ")
         print("BOT:", respond(user_input))
     else:
-        app.run(debug=True)
+        app.run(debug=True, port=5001)
 
