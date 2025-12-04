@@ -1,7 +1,10 @@
 import re
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify, render_template
 
-app = Flask(__name__, static_folder=".", static_url_path="")
+# Use the default Flask static and template folders:
+# - static files in ./static
+# - templates in ./templates
+app = Flask(__name__)
 
 
 def respond(user_input):
@@ -61,8 +64,9 @@ def respond(user_input):
 
 @app.route("/")
 def index():
-    """Serve the main HTML page"""
-    return send_from_directory(".", "ChatBot1.html")
+    """Serve the main HTML page using the Jinja2 template engine"""
+    # Renders templates/ChatBot1.html so that {{ url_for(...) }} works correctly
+    return render_template("ChatBot1.html")
 
 
 @app.route("/answer", methods=["POST"])
