@@ -1,1 +1,1 @@
-web: gunicorn bots.regexbot:app --bind 0.0.0.0:$PORT
+web: gunicorn bots.wordRecogniser:app --bind 0.0.0.0:$PORT
