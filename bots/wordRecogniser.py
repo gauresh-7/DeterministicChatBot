@@ -8,9 +8,9 @@ from nltk.corpus import stopwords
 from wikipedia.exceptions import DisambiguationError, PageError
 from flask import Flask, request, jsonify, render_template
 
-# Ensure NLTK stopwords are available (both locally and on Render)
+
 try:
-    # This will raise LookupError if the corpus is missing
+    
     _ = stopwords.words('english')
 except LookupError:
     print("Downloading NLTK stopwords corpus...")
