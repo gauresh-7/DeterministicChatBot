@@ -4,7 +4,7 @@ import os
 from flask import Flask, request, jsonify, render_template
 from wordRecogniser import extract_keywords, askWiki
 
-# Get the parent directory path
+
 parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 app = Flask(__name__, 
             static_folder=os.path.join(parent_dir, 'static'),
@@ -66,11 +66,11 @@ def respond(user_input):
     if match_opinion:
         return f"Yes, I think {match_opinion.group(1)} is nice!"
     
-    # If no patterns matched, try Wikipedia for factual questions
+    
     keywords = extract_keywords(user_input)
     if keywords:
         wiki_answer = askWiki(keywords)
-        # Only return Wikipedia answer if it's not an error message
+        
         if not wiki_answer.startswith("ERROR") and not wiki_answer.startswith("Error"):
             return wiki_answer
     
